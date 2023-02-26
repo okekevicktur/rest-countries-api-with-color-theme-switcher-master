@@ -110,10 +110,21 @@ body{
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
     /* background-color: black; */
-    gap: 10px;
+    gap: 30px;
     padding-top: 30px;
 }
 .country{
-    background-color: bisque;
-    
+  
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    border-radius: 3px;
+    background-color: hsl(0, 0%, 100%);
+    box-shadow: 0px 1px 1px hsl(0, 0%, 52%);
+}
+#country-flag{
+    width: 100%;
+   
+}
+.country-details{
+    padding: 20px;
 }
