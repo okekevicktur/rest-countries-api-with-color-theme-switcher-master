@@ -112,6 +112,7 @@ body{
     /* background-color: black; */
     gap: 30px;
     padding-top: 30px;
+    width: 100%;
 }
 .country{
   
