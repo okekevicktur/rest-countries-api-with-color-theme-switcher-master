@@ -1,0 +1,119 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;400;600;700;800&display=swap');
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+body{
+    background-color: hsl(0, 0%, 98%);
+    /* position: relative; */
+    min-height: 67vh;
+    font-family: 'Lora', serif;
+    /* min-width: 300px; */
+    font-size: 14px;
+    color: hsl(200, 15%, 8%);
+    font-family: 'Nunito Sans', sans-serif;
+    width: 100%;
+    /* width: 420px; */
+    /* display: flex; */
+    justify-content: center;
+    align-items: center;
+  
+}
+.container{
+    /* background-color: red; */
+   
+    
+   
+}
+
+.header{
+    display: flex;
+    justify-content: space-between;
+    /* padding: 10px 0; */
+    box-shadow: 0px 1px 5px hsl(0, 0%, 52%);
+    padding: 10px 30px;
+    background-color: hsl(0, 0%, 100%);
+}
+.headerText{
+    font-weight: 800;
+}
+.dark{
+    display: none;
+}
+.light{
+    font-size: 12px;
+}
+#mode{
+    font-weight: 400;
+    font-size: 12px;
+
+}
+.main{
+    padding: 30px;
+    
+}
+.subhead{
+    display: flex;
+    justify-content: space-between;
+}
+.searchwrap{
+    display: flex;
+    box-shadow: 0px 2px 5px hsl(0, 0%, 52%);
+    padding: 8px 20px;
+    background-color: hsl(0, 0%, 100%);
+    width: 30%;
+    color: hsl(0, 0%, 52%);
+    justify-content: space-between;
+    border-radius: 3px;
+    /* cursor: pointer; */
+}
+#search{
+    border: none;
+    width: 100%;
+    font-size: 90%;
+    margin-left: 12px;
+    cursor: pointer;
+    outline: none;
+}
+#searchicon{
+    font-size: 90%;
+}
+.filter-wrap{
+    border-radius: 3px;
+    width: 20%;
+    box-shadow: 0px 2px 5px hsl(0, 0%, 52%);
+    padding: 8px 10px;
+    background-color:hsl(0, 0%, 100%);
+}
+#filter{
+    cursor: pointer;
+    width: 100%;
+    padding: 2px ;
+    font-size: 90%;
+    color: hsl(0, 0%, 52%);
+    outline: none;
+    border: none;
+}
+.regions{
+    /* padding-top: 15px; */
+    border: none;
+    outline: none;
+ 
+    font-size: 90%;
+    width: 100%;
+}
+.optionwrap{
+    width: 100%;
+}
+.countries{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    /* background-color: black; */
+    gap: 10px;
+    padding-top: 30px;
+}
+.country{
+    background-color: bisque;
+    
+}
