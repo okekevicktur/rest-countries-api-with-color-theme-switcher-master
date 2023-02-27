@@ -108,7 +108,7 @@ body{
 .optionwrap{
     width: 100%;
 }
-.countries{
+#countries{
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
     /* background-color: black; */

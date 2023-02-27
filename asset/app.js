@@ -5,7 +5,7 @@ const countryFlag= document.getElementById("country-flag");
 const countryName= document.getElementById("name");
 const population= document.getElementById("population");
 const capital= document.getElementById("capital");
-const countries = document.querySelector(".countries");
+const countries = document.getElementById("countries");
 const searchTextbox = document.getElementById("search");
 const dyCountries = document.querySelectorAll('.country')
  // slizedArray.forEach(slicey => {
@@ -145,18 +145,26 @@ async function getCountry(url,countryName){
 // }     
 } 
 
+function getCountry(url,countryName)
 
 search.addEventListener('click', function(){
     // console.log('clicked');
     let newCountry=  searchTextbox.value;
     
-    if (newCountry !== "") {
-        dyCountries.forEach((dycountry) =>{
-            dycountry.classList.remove('country');
-        });
+    if (newCountry === "") {
+        alert("type a country name to search");
+       
         //getCountry(apiUrl,newCountry);
     }else{
-        alert("type a country name to search")
+        console.log("trying to delete");
+        let allCountries = document.querySelectorAll('.country')
+        allCountries.forEach(dycountry =>{
+            dycountry.remove();
+            // dycountry.classList.remove('country');
+            // console.log("removed");
+        });
+        getCountry(apiUrl,newCountry);
+      
     }
     
 });
