@@ -21,7 +21,7 @@ async function getapi(url){
             if (response.ok) {
                 //storing data in form of JSon
                 var data = await response.json();
-                const slizedArray = data.slice(1,25);
+                const slizedArray = data.slice(1,200);
                
 
                 for (let i = 0; i < slizedArray.length; i++) {
@@ -45,15 +45,21 @@ async function getapi(url){
                     //population
                     var population = document.createElement('p');
                     population.className= "population";
-                    population.innerText  = `${slizedArray[i].population}`;
+                    population.innerText  = `Population: ${slizedArray[i].population}`;
+                    //region
+                    var region = document.createElement('p');
+                    region.className= "region";
+                    region.innerText  = `Region: ${slizedArray[i].region}`;
+                    
                     //capital
                     var capital = document.createElement('p');
                     capital.className= "capital";
-                    capital.innerText  = `${slizedArray[i].capital[0]}`;
+                    capital.innerText  = `Capital: ${slizedArray[i].capital[0]}`;
 
                     // append child
                     detailsWrap.appendChild(name); 
                     detailsWrap.appendChild(population);
+                    detailsWrap.appendChild(region);
                     detailsWrap.appendChild(capital);
                     cardWrap.appendChild(card);
                     Countryframe.appendChild(cardWrap);
