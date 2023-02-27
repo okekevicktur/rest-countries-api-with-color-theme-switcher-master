@@ -14,7 +14,7 @@ const dyCountries = document.querySelectorAll('.country')
     // population.innerText=`${slizedArray[0].population}`;
     // capital.innerText=`${slizedArray[0].capital[0]}`;
 
-window.addEventListener('load',getapi(apiUrl));
+window.addEventListener('load', getapi(apiUrl));
 
 async function getapi(url){
         //storing response 
@@ -71,7 +71,7 @@ async function getapi(url){
                 }
             }
             else{
-            alert("word not available");
+                alert("word not available");
             
             }
     
@@ -136,8 +136,8 @@ async function getCountry(url,countryName){
             }
         }
         else{
-        alert("word not available");
-        
+             alert("word not available");
+             getapi(url);
         }
 
 // } catch (error) {
@@ -145,28 +145,23 @@ async function getCountry(url,countryName){
 // }     
 } 
 
-function getCountry(url,countryName)
+function deleteCountry(){
+    let allCountries = document.querySelectorAll('.country')
+    allCountries.forEach(dycountry =>{
+        dycountry.remove();
+    });
+}
 
 search.addEventListener('click', function(){
-    // console.log('clicked');
     let newCountry=  searchTextbox.value;
     
     if (newCountry === "") {
         alert("type a country name to search");
-       
-        //getCountry(apiUrl,newCountry);
     }else{
-        console.log("trying to delete");
-        let allCountries = document.querySelectorAll('.country')
-        allCountries.forEach(dycountry =>{
-            dycountry.remove();
-            // dycountry.classList.remove('country');
-            // console.log("removed");
-        });
-        getCountry(apiUrl,newCountry);
-      
+        // console.log("trying to delete");
+        deleteCountry();
+        getCountry(apiUrl,newCountry);      
     }
-    
 });
 
 searchTextbox.addEventListener('keypress',function(e){
