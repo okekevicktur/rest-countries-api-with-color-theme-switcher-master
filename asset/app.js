@@ -7,7 +7,8 @@ const population= document.getElementById("population");
 const capital= document.getElementById("capital");
 const countries = document.getElementById("countries");
 const searchTextbox = document.getElementById("search");
-const dyCountries = document.querySelectorAll('.country')
+const dyCountries = document.querySelectorAll('.country');
+const selectElement = document.querySelector('#filter');
  // slizedArray.forEach(slicey => {
     // countryFlag.setAttribute('src', `${slizedArray[0].flags.svg}`);
     // countryName.innerText=`${slizedArray[0].name.common}`;
@@ -16,6 +17,72 @@ const dyCountries = document.querySelectorAll('.country')
 
 window.addEventListener('load', getapi(apiUrl));
 
+async function fetchAll(url, event){
+    const response = await fetch(`${url}/all`);
+    if (response.ok) {
+        //storing data in form of JSon
+        var regionArray = await response.json();
+        
+    var slizedArray = [];
+   
+    regionArray.forEach(county => {  
+        if(county.region === `${event.target.value}`){
+            slizedArray.push(county);
+            
+        }
+    });
+        if(slizedArray.length >0 ){
+            for (let i = 0; i < slizedArray.length; i++) {
+                var Countryframe= document.createElement('div');
+                Countryframe.className ="country";
+        
+                var cardWrap = document.createElement('div');
+                cardWrap.className= "imgwrap";
+                //img element
+                var card = document.createElement('img');
+                card.className= "country-flag";
+                card.src =`${slizedArray[i].flags.png}`;
+                
+                //country details Container
+                var detailsWrap = document.createElement('div');
+                detailsWrap.className = "country-details";
+                //Children
+                var name = document.createElement('p');
+                name.className= "name";
+                name.innerText  = `${slizedArray[i].name.common}`;
+                //population
+                var population = document.createElement('p');
+                population.className= "population";
+                population.innerText  = `Population: ${slizedArray[i].population}`;
+                //region
+                var region = document.createElement('p');
+                region.className= "region";
+                region.innerText  = `Region: ${slizedArray[i].region}`;
+                
+                //capital
+                var capital = document.createElement('p');
+                capital.className= "capital";
+                capital.innerText  = `Capital: ${slizedArray[i].capital}`;
+        
+                // append child
+                detailsWrap.appendChild(name); 
+                detailsWrap.appendChild(population);
+                detailsWrap.appendChild(region);
+                detailsWrap.appendChild(capital);
+                cardWrap.appendChild(card);
+                Countryframe.appendChild(cardWrap);
+                Countryframe.appendChild(detailsWrap);
+                countries.appendChild(Countryframe);
+        
+            }
+        }
+        else{
+            alert("No country is available in this region");
+            getapi(apiUrl);
+        }
+       
+    }
+}
 async function getapi(url){
         //storing response 
     // try {
@@ -71,7 +138,7 @@ async function getapi(url){
                 }
             }
             else{
-                alert("word not available");
+                alert("country not available");
             
             }
     
@@ -86,10 +153,7 @@ async function getCountry(url,countryName){
         if (response.ok) {
             //storing data in form of JSon
             var slizedArray = await response.json();
-            // const slizedArray = data.slice(1,200);
-                
-            // countries.removeChild(dyCountries);
-           
+         
 
             for (let i = 0; i < slizedArray.length; i++) {
                 var Countryframe= document.createElement('div');
@@ -121,7 +185,7 @@ async function getCountry(url,countryName){
                 //capital
                 var capital = document.createElement('p');
                 capital.className= "capital";
-                capital.innerText  = `Capital: ${slizedArray[i].capital[0]}`;
+                capital.innerText  = `Capital: ${slizedArray[i].capital}`;
 
                 // append child
                 detailsWrap.appendChild(name); 
@@ -170,6 +234,25 @@ searchTextbox.addEventListener('keypress',function(e){
         search.click();
     }
 });
+
+selectElement.addEventListener('change', (event) => {
+    let newRegion=  `${event.target.value}`;
+    
+    if (newRegion === "") {
+        alert("you can search based on region");
+        getapi(apiUrl);
+    }else{
+        // console.log("trying to delete");
+        deleteCountry();
+        fetchAll(apiUrl, event);    
+    }
+    
+    
+  });
+
+
+
+
 
 
    
