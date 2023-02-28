@@ -19,18 +19,18 @@ const wholeDocument = document.body;
 
 window.addEventListener('load', getapi(apiUrl));
 
-{/* <input type="button" value="Go to page" onclick="location.href='mypage.html'"/>
-Anyway u can try:
+// {/* <input type="button" value="Go to page" onclick="location.href='mypage.html'"/>
+// Anyway u can try:
 
-onClick: function () {
-                location.href("about.html");
-               } */}
+// onClick: function () {
+//                 location.href("about.html");
+//                } */}
 
 
-aCountry.addEventListener('click', function(){
-    let aCountry = document.querySelector('.country').querySelector('.country-details').querySelector('.name');
-    console.log(ac)
-});
+// aCountry.addEventListener('click', function(){
+//     let aCountry = document.querySelector('.country').querySelector('.country-details').querySelector('.name');
+//     console.log(ac)
+// });
 
 Mode.addEventListener('click', function(){
     if (Mode.innerText === "Dark Mode"){
