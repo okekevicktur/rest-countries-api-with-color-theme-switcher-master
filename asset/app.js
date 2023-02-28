@@ -9,6 +9,8 @@ const countries = document.getElementById("countries");
 const searchTextbox = document.getElementById("search");
 const dyCountries = document.querySelectorAll('.country');
 const selectElement = document.querySelector('#filter');
+const Mode = document.getElementById("mode");
+const wholeDocument = document.body;
  // slizedArray.forEach(slicey => {
     // countryFlag.setAttribute('src', `${slizedArray[0].flags.svg}`);
     // countryName.innerText=`${slizedArray[0].name.common}`;
@@ -16,6 +18,44 @@ const selectElement = document.querySelector('#filter');
     // capital.innerText=`${slizedArray[0].capital[0]}`;
 
 window.addEventListener('load', getapi(apiUrl));
+
+{/* <input type="button" value="Go to page" onclick="location.href='mypage.html'"/>
+Anyway u can try:
+
+onClick: function () {
+                location.href("about.html");
+               } */}
+
+
+aCountry.addEventListener('click', function(){
+    let aCountry = document.querySelector('.country').querySelector('.country-details').querySelector('.name');
+    console.log(ac)
+});
+
+Mode.addEventListener('click', function(){
+    if (Mode.innerText === "Dark Mode"){
+        document.getElementById('lightMoon').style.display = "none";
+        document.getElementById('darkMoon').style.display = "inline-block";
+        wholeDocument.style.backgroundColor = "hsl(207, 26%, 17%)";
+        wholeDocument.style.color = "hsl(0, 0%, 100%)";
+        document.getElementById('header').style.backgroundColor = "hsl(209, 23%, 22%)";
+        let allCountries = document.querySelectorAll('.country')
+        allCountries.forEach(dycountry =>{
+            dycountry.style.color = "hsl(209, 23%, 22%)";
+        });
+        // document.querySelector('.country-details').style.color = "hsl(209, 23%, 22%)";
+        Mode.innerText = "Light Mode";
+
+    }else{
+        document.getElementById('lightMoon').style.display = "inline-block";
+        document.getElementById('darkMoon').style.display = "none";
+        wholeDocument.style.backgroundColor = "hsl(0, 0%, 98%)";
+        wholeDocument.style.color = "hsl(200, 15%, 8%)";
+        document.getElementById('header').style.backgroundColor = "hsl(0, 0%, 100%)";
+        // document.querySelector('.country-details').style.color = "hsl(200, 15%, 8%)";
+        Mode.innerText = "Dark Mode";
+    }
+});
 
 async function fetchAll(url, event){
     const response = await fetch(`${url}/all`);
@@ -210,7 +250,7 @@ async function getCountry(url,countryName){
 } 
 
 function deleteCountry(){
-    let allCountries = document.querySelectorAll('.country')
+    let allCountries = document.querySelectorAll('.country');
     allCountries.forEach(dycountry =>{
         dycountry.remove();
     });
