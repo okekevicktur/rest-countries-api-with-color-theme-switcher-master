@@ -33,7 +33,7 @@ window.addEventListener('load', getapi(apiUrl));
 // });
 
 function mode(){
-    if (Mode.innerText === "Dark Mode"){
+    if (Mode.innerText === "Light Mode"){
         document.getElementById('lightMoon').style.display = "none";
         document.getElementById('darkMoon').style.display = "inline-block";
         wholeDocument.style.backgroundColor = "hsl(207, 26%, 17%)";
@@ -57,7 +57,28 @@ function mode(){
     }
 }
 Mode.addEventListener('click', function(){
-    mode();
+    if (Mode.innerText === "Dark Mode"){
+        document.getElementById('lightMoon').style.display = "none";
+        document.getElementById('darkMoon').style.display = "inline-block";
+        wholeDocument.style.backgroundColor = "hsl(207, 26%, 17%)";
+        wholeDocument.style.color = "hsl(0, 0%, 100%)";
+        document.getElementById('header').style.backgroundColor = "hsl(209, 23%, 22%)";
+        let allCountries = document.querySelectorAll('.country')
+        allCountries.forEach(dycountry =>{
+            dycountry.style.color = "hsl(209, 23%, 22%)";
+        });
+        // document.querySelector('.country-details').style.color = "hsl(209, 23%, 22%)";
+        Mode.innerText = "Light Mode";
+
+    }else{
+        document.getElementById('lightMoon').style.display = "inline-block";
+        document.getElementById('darkMoon').style.display = "none";
+        wholeDocument.style.backgroundColor = "hsl(0, 0%, 98%)";
+        wholeDocument.style.color = "hsl(200, 15%, 8%)";
+        document.getElementById('header').style.backgroundColor = "hsl(0, 0%, 100%)";
+        // document.querySelector('.country-details').style.color = "hsl(200, 15%, 8%)";
+        Mode.innerText = "Dark Mode";
+    }
 });
 
 async function fetchAll(url, event){
