@@ -22,7 +22,7 @@ body{
 }
 .container{
     /* background-color: red; */
-   
+   margin: 0 auto;
     width: 100%;
    
 }
@@ -116,6 +116,7 @@ body{
     padding-top: 30px;
     width: 100%;
     grid-auto-rows: min-content ;
+    
 }
 .country{
   
@@ -125,7 +126,7 @@ body{
     border-radius: 3px;
     background-color: hsl(0, 0%, 100%);
     box-shadow: 0px 1px 1px hsl(0, 0%, 52%);
-    
+    cursor: pointer;
    
 }
 .country-flag{
@@ -150,4 +151,38 @@ body{
 .population, .region, .capital{
     font-weight: 600;
     margin-bottom: 0.8rem;
+}
+
+/* mobile view */
+@media screen and (max-width: 800px){
+    body{
+        width: 100%;
+    }
+    .container{
+        margin: 0 auto;
+        width: 100%;
+    }
+    #countries{
+        display: grid;
+        grid-template-columns: 1fr ;
+        /* background-color: black; */
+        gap: 2rem;
+        padding-top: 30px;
+        width: 85%;
+        margin: 0 auto;
+        grid-auto-rows: min-content ;
+        
+    }
+    .country{
+  
+        /* height: min-content; */
+        /* display: grid;
+        grid-template-rows: 1fr 1fr; */
+        border-radius: 4px;
+        background-color: hsl(0, 0%, 100%);
+        box-shadow: 0px 1px 1px hsl(0, 0%, 52%);
+        cursor: pointer;
+       
+    }
+    
 }
