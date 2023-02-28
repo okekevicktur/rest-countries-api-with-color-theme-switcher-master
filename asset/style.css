@@ -27,7 +27,7 @@ body{
    
 }
 
-.header{
+#header{
     display: flex;
     justify-content: space-between;
     /* padding: 10px 0; */
@@ -48,6 +48,7 @@ body{
 #mode{
     font-weight: 400;
     font-size: 13px;
+    cursor: pointer;
 
 }
 .main{
@@ -68,20 +69,25 @@ body{
     color: hsl(0, 0%, 52%);
     justify-content: space-between;
     border-radius: 3px;
+    align-items: center;
     /* cursor: pointer; */
 }
 #search{
     border: none;
     width: 100%;
-    font-size: 90%;
+    font-size: 14px;
     margin-left: 12px;
     cursor: pointer;
     outline: none;
+    padding: 15px 0;
+    font-weight: 600;
 }
 #searchicon{
     font-size: 90%;
+    padding: 15px 0;
 }
 .filter-wrap{
+    display: flex;
     border-radius: 3px;
     width: 20%;
     box-shadow: 0px 2px 5px hsl(0, 0%, 52%);
@@ -90,9 +96,10 @@ body{
 }
 #filter{
     cursor: pointer;
+    font-weight: 600;
     width: 100%;
     padding: 2px ;
-    font-size: 90%;
+    font-size: 14px;
     color: hsl(0, 0%, 52%);
     outline: none;
     border: none;
@@ -102,7 +109,7 @@ body{
     border: none;
     outline: none;
  
-    font-size: 90%;
+    font-size: 100%;
     width: 100%;
 }
 .optionwrap{
@@ -184,14 +191,31 @@ body{
         cursor: pointer;
        
     }
-    .header{
-        display: block;
-        justify-content: space-between;
-        /* padding: 10px 0; */
-        width: 100%;
-        box-shadow: 0px 1px 5px hsl(0, 0%, 52%);
-        padding: 15px 30px;
-        background-color: hsl(0, 0%, 100%);
-    }
     
+    .subhead{
+        display: block;
+        
+    }
+    .filter-wrap{
+        margin-top: 30px;
+        border-radius: 3px;
+        width: 50%;
+        box-shadow: 0px 2px 5px hsl(0, 0%, 52%);
+        padding: 8px 10px;;
+        background-color:hsl(0, 0%, 100%);
+    }
+    .searchwrap{
+        display: flex;
+        box-shadow: 0px 2px 5px hsl(0, 0%, 52%);
+        padding: 0 20px;
+        background-color: hsl(0, 0%, 100%);
+        width: 100%;
+        color: hsl(0, 0%, 52%);
+        justify-content: space-between;
+        border-radius: 3px;
+        /* cursor: pointer; */
+    }
+   
+   
+   
 }
