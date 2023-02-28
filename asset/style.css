@@ -184,5 +184,14 @@ body{
         cursor: pointer;
        
     }
+    .header{
+        display: block;
+        justify-content: space-between;
+        /* padding: 10px 0; */
+        width: 100%;
+        box-shadow: 0px 1px 5px hsl(0, 0%, 52%);
+        padding: 15px 30px;
+        background-color: hsl(0, 0%, 100%);
+    }
     
 }
