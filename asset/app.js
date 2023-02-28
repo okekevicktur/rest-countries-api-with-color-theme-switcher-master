@@ -32,7 +32,7 @@ window.addEventListener('load', getapi(apiUrl));
 //     console.log(ac)
 // });
 
-Mode.addEventListener('click', function(){
+function mode(){
     if (Mode.innerText === "Dark Mode"){
         document.getElementById('lightMoon').style.display = "none";
         document.getElementById('darkMoon').style.display = "inline-block";
@@ -55,6 +55,9 @@ Mode.addEventListener('click', function(){
         // document.querySelector('.country-details').style.color = "hsl(200, 15%, 8%)";
         Mode.innerText = "Dark Mode";
     }
+}
+Mode.addEventListener('click', function(){
+    mode();
 });
 
 async function fetchAll(url, event){
@@ -115,6 +118,7 @@ async function fetchAll(url, event){
                 countries.appendChild(Countryframe);
         
             }
+            mode();
         }
         else{
             alert("No country is available in this region");
@@ -176,10 +180,11 @@ async function getapi(url){
                     countries.appendChild(Countryframe);
 
                 }
+                mode();
             }
             else{
                 alert("country not available");
-            
+                mode();
             }
     
     // } catch (error) {
@@ -238,10 +243,12 @@ async function getCountry(url,countryName){
                 countries.appendChild(Countryframe);
 
             }
+            mode();
         }
         else{
              alert("word not available");
              getapi(url);
+             mode();
         }
 
 // } catch (error) {
