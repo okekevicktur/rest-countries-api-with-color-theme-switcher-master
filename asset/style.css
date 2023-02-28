@@ -70,7 +70,7 @@ body{
     justify-content: space-between;
     border-radius: 3px;
     align-items: center;
-    /* cursor: pointer; */
+
 }
 #search{
     border: none;
@@ -133,7 +133,7 @@ body{
     border-radius: 3px;
     background-color: hsl(0, 0%, 100%);
     box-shadow: 0px 1px 1px hsl(0, 0%, 52%);
-    cursor: pointer;
+   
    
 }
 .country-flag{
@@ -154,6 +154,12 @@ body{
 .country-details .name{
     font-weight: 800;
     margin-bottom: 1rem;
+    width: 100%;
+    cursor: pointer;
+}
+.name:hover{
+    font-size: 25px;
+    transition: .5 ease-out;
 }
 .population, .region, .capital{
     font-weight: 600;
@@ -188,7 +194,7 @@ body{
         border-radius: 4px;
         background-color: hsl(0, 0%, 100%);
         box-shadow: 0px 1px 1px hsl(0, 0%, 52%);
-        cursor: pointer;
+        /* cursor: pointer; */
        
     }
     
@@ -213,7 +219,7 @@ body{
         color: hsl(0, 0%, 52%);
         justify-content: space-between;
         border-radius: 3px;
-        /* cursor: pointer; */
+      
     }
    
    

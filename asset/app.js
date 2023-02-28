@@ -25,14 +25,21 @@ window.addEventListener('load', getapi(apiUrl));
 // onClick: function () {
 //                 location.href("about.html");
 //                } */}
+// const thisCounty=  document.getElementsByClassName('.country-details');
 
+var  textContent ;
+function clickEvent(e) {  
+  if (e.target.classList.contains('name')) {
+      ({textContent}  = e.target);
+    console.log(`${textContent}`);
+  }else{
+    // console.log("not found");
 
-// aCountry.addEventListener('click', function(){
-//     let aCountry = document.querySelector('.country').querySelector('.country-details').querySelector('.name');
-//     console.log(ac)
-// });
+  }
+}
 
 function mode(){
+
     if (Mode.innerText === "Light Mode"){
         document.getElementById('lightMoon').style.display = "none";
         document.getElementById('darkMoon').style.display = "inline-block";
@@ -57,6 +64,8 @@ function mode(){
     }
 }
 Mode.addEventListener('click', function(){
+    let aCountry = document.querySelector('.country-details').querySelector('.name');
+    console.log(aCountry.innerText);
     if (Mode.innerText === "Dark Mode"){
         document.getElementById('lightMoon').style.display = "none";
         document.getElementById('darkMoon').style.display = "inline-block";
@@ -110,6 +119,8 @@ async function fetchAll(url, event){
                 //country details Container
                 var detailsWrap = document.createElement('div');
                 detailsWrap.className = "country-details";
+                // detailsWrap.addEventListener('click', handleClick);
+                
                 //Children
                 var name = document.createElement('p');
                 name.className= "name";
@@ -137,7 +148,8 @@ async function fetchAll(url, event){
                 Countryframe.appendChild(cardWrap);
                 Countryframe.appendChild(detailsWrap);
                 countries.appendChild(Countryframe);
-        
+                detailsWrap.addEventListener('click', clickEvent, false);
+               
             }
             mode();
         }
@@ -199,6 +211,8 @@ async function getapi(url){
                     Countryframe.appendChild(cardWrap);
                     Countryframe.appendChild(detailsWrap);
                     countries.appendChild(Countryframe);
+                    detailsWrap.addEventListener('click', clickEvent, false);
+                   
 
                 }
                 mode();
@@ -262,6 +276,7 @@ async function getCountry(url,countryName){
                 Countryframe.appendChild(cardWrap);
                 Countryframe.appendChild(detailsWrap);
                 countries.appendChild(Countryframe);
+                detailsWrap.addEventListener('click', clickEvent, false);
 
             }
             mode();
