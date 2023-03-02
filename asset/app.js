@@ -36,9 +36,9 @@ function clickEvent(e) {
     //   wholeDocument.style.margin= "0"; 
 
     //   wholeDocument.style.overflow= "hidden";  
-    // console.log(`${textContent}`);
+
        
-            deleteBorders();
+        deleteBorders();
         getNewCountry(apiUrl,`${textContent}`)
   }else{
     // console.log("not found");
@@ -53,7 +53,7 @@ backButton.addEventListener('click', function(){
 });
 async function getNewCountry(url,countryName){
     //storing response 
-// try {
+try {
         const response = await fetch(`${url}/name/${countryName}`);
         if (response.ok) {
             //storing data in form of JSon
@@ -133,6 +133,8 @@ async function getNewCountry(url,countryName){
                   if(colBorders){
                     // console.log("I am defined");
                     //    = Array.from(colBorders);
+                    var borderCont= document.createElement('div');
+                    borderCont.className ="borderCont";
                     colBorders.forEach(bord =>{
                         var borderframe= document.createElement('div');
                             borderframe.className ="countryborder";
@@ -141,7 +143,8 @@ async function getNewCountry(url,countryName){
                             borderName.innerText = bord;
                                // append child
                             borderframe.appendChild(borderName); 
-                            countryborder.appendChild(borderframe);
+                            borderCont.appendChild(borderframe);
+                            countryborder.appendChild(borderCont);
                     });                    
     
                    
@@ -157,9 +160,9 @@ async function getNewCountry(url,countryName){
              mode();
         }
 
-// } catch (error) {
-//     alert(`Error: ${error}`);       
-// }     
+} catch (error) {
+    alert(`Opps: ${error}`);       
+}     
 } 
 
 function mode(){
@@ -172,9 +175,16 @@ function mode(){
         document.getElementById('header').style.backgroundColor = "hsl(209, 23%, 22%)";
         let allCountries = document.querySelectorAll('.country')
         allCountries.forEach(dycountry =>{
-            dycountry.style.color = "hsl(209, 23%, 22%)";
+            dycountry.style.color = "hsl(0, 0%, 100%)";
+            dycountry.style.backgroundColor = "hsl(209, 23%, 22%)";
         });
-        // document.querySelector('.country-details').style.color = "hsl(209, 23%, 22%)";
+        let allColheads = document.querySelectorAll('.colhead');
+        allColheads.forEach(dheads =>{
+            dheads.style.color = "hsl(0, 0%, 100%)";
+            dheads.style.backgroundColor = "hsl(209, 23%, 22%)";
+        });
+        document.querySelector('.info-container').style.color = "hsl(0, 0%, 100%)";
+        document.querySelector('.info-container').style.backgroundColor = "hsl(209, 23%, 22%)";
         Mode.innerText = "Light Mode";
 
     }else{
@@ -184,6 +194,18 @@ function mode(){
         wholeDocument.style.color = "hsl(200, 15%, 8%)";
         document.getElementById('header').style.backgroundColor = "hsl(0, 0%, 100%)";
         // document.querySelector('.country-details').style.color = "hsl(200, 15%, 8%)";
+        let allCountries = document.querySelectorAll('.country')
+        allCountries.forEach(dycountry =>{
+            dycountry.style.color = "hsl(209, 23%, 22%)";
+            dycountry.style.backgroundColor = "hsl(0, 0%, 100%)";
+        });
+        let allColheads = document.querySelectorAll('.colhead');
+        allColheads.forEach(dheads =>{
+            dheads.style.color = "hsl(209, 23%, 22%)";
+            dheads.style.backgroundColor = "hsl(0, 0%, 100%)";
+        });
+        document.querySelector('.info-container').style.color = "hsl(200, 15%, 8%)";
+        document.querySelector('.info-container').style.backgroundColor = "hsl(0, 0%, 100%)";
         Mode.innerText = "Dark Mode";
     }
 }
@@ -196,11 +218,18 @@ Mode.addEventListener('click', function(){
         wholeDocument.style.backgroundColor = "hsl(207, 26%, 17%)";
         wholeDocument.style.color = "hsl(0, 0%, 100%)";
         document.getElementById('header').style.backgroundColor = "hsl(209, 23%, 22%)";
-        let allCountries = document.querySelectorAll('.country')
+        let allCountries = document.querySelectorAll('.country');
         allCountries.forEach(dycountry =>{
-            dycountry.style.color = "hsl(209, 23%, 22%)";
+            dycountry.style.color = "hsl(0, 0%, 100%)";
+            dycountry.style.backgroundColor = "hsl(209, 23%, 22%)";
         });
-        // document.querySelector('.country-details').style.color = "hsl(209, 23%, 22%)";
+        let allColheads = document.querySelectorAll('.colhead');
+        allColheads.forEach(dheads =>{
+            dheads.style.color = "hsl(0, 0%, 100%)";
+            dheads.style.backgroundColor = "hsl(209, 23%, 22%)";
+        });
+        document.querySelector('.info-container').style.color = "hsl(0, 0%, 100%)";
+        document.querySelector('.info-container').style.backgroundColor = "hsl(209, 23%, 22%)";
         Mode.innerText = "Light Mode";
 
     }else{
@@ -209,7 +238,20 @@ Mode.addEventListener('click', function(){
         wholeDocument.style.backgroundColor = "hsl(0, 0%, 98%)";
         wholeDocument.style.color = "hsl(200, 15%, 8%)";
         document.getElementById('header').style.backgroundColor = "hsl(0, 0%, 100%)";
-        // document.querySelector('.country-details').style.color = "hsl(200, 15%, 8%)";
+        // document.querySelector('.country-details').style.color = "hsl(209, 23%, 22%)";
+        // document.querySelector('.country-details').style.backgroundColor = "hsl(0, 0%, 100%)";
+        let allCountries = document.querySelectorAll('.country')
+        allCountries.forEach(dycountry =>{
+            dycountry.style.color = "hsl(209, 23%, 22%)";
+            dycountry.style.backgroundColor = "hsl(0, 0%, 100%)";
+        });
+        let allColheads = document.querySelectorAll('.colhead');
+        allColheads.forEach(dheads =>{
+            dheads.style.color = "hsl(209, 23%, 22%)";
+            dheads.style.backgroundColor = "hsl(0, 0%, 100%)";
+        });
+        document.querySelector('.info-container').style.color = "hsl(200, 15%, 8%)";
+        document.querySelector('.info-container').style.backgroundColor = "hsl(0, 0%, 100%)";
         Mode.innerText = "Dark Mode";
     }
 });
