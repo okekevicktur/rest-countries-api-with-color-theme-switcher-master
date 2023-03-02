@@ -465,7 +465,7 @@ function deleteCountry(){
     });
 }
 function deleteBorders(){
-    let allborders = document.querySelectorAll('.countryborder');
+    let allborders = document.querySelectorAll('.borderCont');
     allborders.forEach(border =>{
         border.remove();
     });

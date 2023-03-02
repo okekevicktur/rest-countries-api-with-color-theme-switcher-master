@@ -276,6 +276,14 @@ body{
     padding: 5px 15px;
 
 }
+ .borderCont{
+    margin-top: 20px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 15px; 
+    text-align: center;
+   
+   }
 
 
 /* mobile view */
