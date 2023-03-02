@@ -1,4 +1,5 @@
 const apiUrl = 'https://restcountries.com/v3.1';
+// https://restcountries.com/v3.1/name/{name}
 const search = document.getElementById("searchicon");
  // https://restcountries.com/v3.1/name/{name}
 const countryFlag= document.getElementById("country-flag");
@@ -10,33 +11,156 @@ const searchTextbox = document.getElementById("search");
 const dyCountries = document.querySelectorAll('.country');
 const selectElement = document.querySelector('#filter');
 const Mode = document.getElementById("mode");
+const extra =  document.querySelector('.mainExtra');
+const main =  document.querySelector('.main');
+const backButton =  document.querySelector('.btnbk');
+
+
+const countryborder =  document.querySelector('.borderWrap');
 const wholeDocument = document.body;
  // slizedArray.forEach(slicey => {
     // countryFlag.setAttribute('src', `${slizedArray[0].flags.svg}`);
     // countryName.innerText=`${slizedArray[0].name.common}`;
     // population.innerText=`${slizedArray[0].population}`;
     // capital.innerText=`${slizedArray[0].capital[0]}`;
-
+    const aborder = document.querySelector('.countryborder');
 window.addEventListener('load', getapi(apiUrl));
-
-// {/* <input type="button" value="Go to page" onclick="location.href='mypage.html'"/>
-// Anyway u can try:
-
-// onClick: function () {
-//                 location.href("about.html");
-//                } */}
-// const thisCounty=  document.getElementsByClassName('.country-details');
 
 var  textContent ;
 function clickEvent(e) {  
   if (e.target.classList.contains('name')) {
       ({textContent}  = e.target);
-    console.log(`${textContent}`);
+      extra.style.display= "block";
+      main.style.display= "none";
+    //   wholeDocument.style.height= "100%";
+    //   wholeDocument.style.margin= "0"; 
+
+    //   wholeDocument.style.overflow= "hidden";  
+    // console.log(`${textContent}`);
+       
+            deleteBorders();
+        getNewCountry(apiUrl,`${textContent}`)
   }else{
     // console.log("not found");
 
   }
 }
+backButton.addEventListener('click', function(){
+    main.style.display = "block";
+    extra.style.display = "none";
+
+
+});
+async function getNewCountry(url,countryName){
+    //storing response 
+// try {
+        const response = await fetch(`${url}/name/${countryName}`);
+        if (response.ok) {
+            //storing data in form of JSon
+            var slizedArray = await response.json();
+            for (let i = 0; i < slizedArray.length; i++) {
+                //country name
+                var countryName= document.getElementById("C-Name");
+                countryName.innerText =`${slizedArray[i].name.common}`;
+
+                //img element
+                var card= document.getElementById("cflag");
+                card.src =`${slizedArray[i].flags.png}`;
+                card.alt = `${slizedArray[i].flags.alt}`;
+                
+                //native name eng,deu,fra,nld,.eng.common
+                var countryNative= document.getElementById("native");
+                var colNative = slizedArray[i].name.nativeName;
+                for(const prop in colNative){
+
+                    countryNative.innerText = colNative[prop].common;
+                }
+
+                //population
+                var countryPopulation= document.getElementById("cpopulation");
+                countryPopulation.innerText = ` ${slizedArray[i].population}`;
+
+                //region
+                var region =  document.getElementById("cregion");
+                region.innerText  = ` ${slizedArray[i].region}`;
+                
+                //subregion
+                var subregion =  document.getElementById("subregion");
+                subregion.innerText  = ` ${slizedArray[i].subregion}`;
+
+                //capital
+                var capital =  document.getElementById("ccapital");
+                capital.innerText  = ` ${slizedArray[i].capital}`;
+
+                 //Top Level Domain
+                 var Toplevel =  document.getElementById("domain");
+                 Toplevel.innerText  = ` ${slizedArray[i].tld}`;
+               
+                 //currency
+                 //Top Level Domain
+                 var Currency =  document.getElementById("currency");
+                //Currency.innerText 
+                var Curr  = slizedArray[i].currencies; var countprop =0;
+                for(const prop in Curr){
+                    countprop++;
+                        if (countprop >1) {
+                            Currency.innerText += `, ${Curr[prop].name}`;
+                        }else{
+                            Currency.innerText += ` ${Curr[prop].name}`;
+                        }
+                    // console.log(prop);
+                   
+                
+               }
+               
+                  //Languages
+                  var countl =0;
+                  var language =  document.getElementById("lang");
+                  var countlang = slizedArray[i].languages;
+                  //displays the property of an object
+                       for(const prop in countlang){
+                        countl++;
+
+                            if (countl >1) {
+                                language.innerText += `, ${countlang[prop]}`;
+                            }else{
+                                language.innerText += `${countlang[prop]}`;
+                            }
+                        }
+
+                  //borders
+                  var colBorders =slizedArray[i].borders;
+                  if(colBorders){
+                    // console.log("I am defined");
+                    //    = Array.from(colBorders);
+                    colBorders.forEach(bord =>{
+                        var borderframe= document.createElement('div');
+                            borderframe.className ="countryborder";
+                            var borderName= document.createElement('span');
+                            borderName.className ="borderName";
+                            borderName.innerText = bord;
+                               // append child
+                            borderframe.appendChild(borderName); 
+                            countryborder.appendChild(borderframe);
+                    });                    
+    
+                   
+                  }else{
+                    // console.log("i am undefined")
+                  }
+                 
+            }
+            mode();
+        }
+        else{
+             alert("country name not available");
+             mode();
+        }
+
+// } catch (error) {
+//     alert(`Error: ${error}`);       
+// }     
+} 
 
 function mode(){
 
@@ -296,6 +420,12 @@ function deleteCountry(){
     let allCountries = document.querySelectorAll('.country');
     allCountries.forEach(dycountry =>{
         dycountry.remove();
+    });
+}
+function deleteBorders(){
+    let allborders = document.querySelectorAll('.countryborder');
+    allborders.forEach(border =>{
+        border.remove();
     });
 }
 
